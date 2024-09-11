@@ -1,6 +1,6 @@
 class WelcomeState{
   int page;
-  WelcomeState({this.page=1});
+  WelcomeState({this.page=0});
 
 
 }
