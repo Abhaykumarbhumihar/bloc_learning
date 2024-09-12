@@ -2,6 +2,7 @@ import 'dart:ui';
 
 class AppColors {
 
+  //this is light theme
   static const Color primaryBackground = Color.fromARGB(255, 255, 255, 255);
   static const Color primarySecondaryBackground = Color.fromARGB(255, 247, 247, 249);
   static const Color primaryElement = Color.fromARGB(255, 61, 61, 216);
@@ -13,6 +14,6 @@ class AppColors {
   static const Color primaryFourElementText = Color.fromARGB(255, 204, 204, 204);
   static const Color primaryElementStatus = Color.fromARGB(255, 88, 174, 127);
   static const Color primaryElementBg = Color.fromARGB(255, 238, 121, 99);
-
+//make here for dark theme with same key and how to use explain
 
 }

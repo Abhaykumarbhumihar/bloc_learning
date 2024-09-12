@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../common/utils/screenUtils.dart';
-import '../../../common/values/colors.dart';
+import '../common/utils/screenUtils.dart';
+import '../common/values/colors.dart';
 
-AppBar buildAppBar() {
+
+AppBar buildAppBar(String title) {
   return AppBar(
     centerTitle: true,
     title: Text(
-      "Log In",
+      "$title",
       style: TextStyle(
           color: AppColors.primaryText,
           fontWeight: FontWeight.normal,

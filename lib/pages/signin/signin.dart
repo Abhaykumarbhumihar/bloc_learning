@@ -1,10 +1,11 @@
 import 'package:bloc_learning/pages/signin/bloc/signin_bloc.dart';
+import 'package:bloc_learning/pages/signin/sign_in_controller.dart';
+import 'package:bloc_learning/pages/input_filed_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../utils/screenUtils.dart';
-import 'widgets/sign_in_wid.dart';
+import '../../common/utils/screenUtils.dart';
+import '../common_widgets.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -16,7 +17,7 @@ class SignIn extends StatelessWidget {
         color: Colors.white,
         child: SafeArea(
           child: Scaffold(
-            appBar: buildAppBar(),
+            appBar: buildAppBar("Log in"),
             body: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,28 +35,40 @@ class SignIn extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         resuableText("Email"),
-                        buildInputField("Enter your email", "email", "user",
-                            (value) {
-                          context.read<SigninBloc>().add(EmailEvent(value));
-                        }),
+                        InputField(
+                            text: "Enter your email",
+                            hintText: "email",
+                            textType: "user",
+                            onChanged: (value) {
+                              context.read<SigninBloc>().add(EmailEvent(value));
+                            }),
                         SizedBox(
                           height: 12.h,
                         ),
                         resuableText("Password"),
-                        buildInputField(
-                            "Enter your passwrod", "password", "password",
-                            (value) {
-                          context.read<SigninBloc>().add(PasswordEvent(value));
-                        }),
+                        InputField(
+                            text: "Enter your passwrod",
+                            hintText: "password",
+                            textType: "password",
+                            onChanged: (value) {
+                              context
+                                  .read<SigninBloc>()
+                                  .add(PasswordEvent(value));
+                            }),
                         forgetPassword(),
                         SizedBox(
                           height: ScreenUtils.height(context) * 0.04,
                         ),
-                        buildLoginButton("Log In", context),
+                        buildLoginButton("Log In", context, () {
+                          SignInController(context: context)
+                              .handleSignIn("email");
+                        }),
                         SizedBox(
                           height: ScreenUtils.height(context) * 0.02,
                         ),
-                        buildLoginButton("Sign Up", context)
+                        buildLoginButton("Sign Up", context, () {
+                          Navigator.of(context).pushNamed("register");
+                        })
                       ],
                     ),
                   )
