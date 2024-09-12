@@ -64,7 +64,8 @@ Widget resuableText(String text) {
   );
 }
 
-Widget buildInputField(String text, String hinttext, String texttype) {
+Widget buildInputField(String text,
+    String hinttext, String texttype, void Function(String value)? func) {
   bool obscureText = true;
   return Container(
     width: 325.h,
@@ -88,6 +89,7 @@ Widget buildInputField(String text, String hinttext, String texttype) {
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             autocorrect: false,
+            onChanged: (value)=>func!(value),
             obscureText: texttype == "password" ? true : false,
             decoration: InputDecoration(
                 isDense: true,

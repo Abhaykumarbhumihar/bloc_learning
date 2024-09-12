@@ -35,6 +35,9 @@ dependencies:
   equatable:
   flutter_screenutil:
   dots_indicator:
+  firebase_auth:
+  cloud_firestore:
+  intl:
 
 
   # The following adds the Cupertino Icons font to your application.
