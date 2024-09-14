@@ -1,3 +1,4 @@
+import 'package:bloc_learning/common/routes/routes.dart';
 import 'package:bloc_learning/pages/signin/bloc/signin_bloc.dart';
 import 'package:bloc_learning/pages/signin/sign_in_controller.dart';
 import 'package:bloc_learning/pages/input_filed_widget.dart';
@@ -67,7 +68,7 @@ class SignIn extends StatelessWidget {
                           height: ScreenUtils.height(context) * 0.02,
                         ),
                         buildLoginButton("Sign Up", context, () {
-                          Navigator.of(context).pushNamed("register");
+                          Navigator.of(context).pushNamed(AppRoutes.SIGNUP,arguments: ["ABHAY  KUMAR"]);
                         })
                       ],
                     ),

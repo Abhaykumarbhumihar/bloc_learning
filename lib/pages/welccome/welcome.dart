@@ -126,7 +126,7 @@ class _WelcomeState extends State<Welcome> {
                       duration: const Duration(milliseconds: 1000),
                       curve: Curves.decelerate);
             } else {
-              Navigator.of(context).pushNamedAndRemoveUntil("signIn", (route) => false);
+              Navigator.of(context).pushNamedAndRemoveUntil("sign_in", (route) => false);
               // BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent(0));
               // BlocProvider.of<WelcomeBloc>(context)
               //     .pageController

@@ -1,3 +1,4 @@
+import 'package:bloc_learning/common/routes/pages.dart';
 import 'package:bloc_learning/pages/application/application.dart';
 import 'package:bloc_learning/pages/bloc_providers.dart';
 import 'package:bloc_learning/pages/signUp/sign_up.dart';
@@ -26,22 +27,27 @@ Future<void> main() async {
     ),
   );
 
-  runApp(MultiBlocProvider(
-      providers: AppBlocProviders.allBlocProviders,
-      child: ScreenUtilInit(
-        builder: (context, child) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-              appBarTheme: const AppBarTheme(
-                iconTheme: IconThemeData(
-                  color: AppColors.primaryText,
-                ),
-                  elevation: 0, backgroundColor: Colors.white)),
-          home: const ApplicationPage(),
-          routes: {
-            "signIn": (context) => const SignIn(),
-            "register":(context)=>SignUp(),
-          },
-        ),
-      )));
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+        providers: [...AppPages.allblocProviders(context)],
+        child: ScreenUtilInit(
+          builder: (context, child) => MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+                appBarTheme: const AppBarTheme(
+                    iconTheme: IconThemeData(
+                      color: AppColors.primaryText,
+                    ),
+                    elevation: 0, backgroundColor: Colors.white)),
+            onGenerateRoute: AppPages.GenerateRouteSettingss,
+            initialRoute: "/",
+          ),
+        ));
+  }
 }
