@@ -1,3 +1,4 @@
+import 'package:bloc_learning/service_locator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'common/services/storage_service.dart';
@@ -6,8 +7,9 @@ class Global {
   static late StorageService storageService;
 
   static Future init() async {
+    setupLocator();
     WidgetsFlutterBinding.ensureInitialized();
-
+     // Initialize the service locator
     // Initialize Firebase
     await Firebase.initializeApp(
       options: const FirebaseOptions(

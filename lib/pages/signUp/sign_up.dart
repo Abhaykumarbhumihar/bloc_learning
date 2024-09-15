@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../common/utils/screenUtils.dart';
 import '../common_widgets.dart';
 import '../input_filed_widget.dart';
-import '../signin/sign_in_controller.dart';
 import 'bloc/sign_up_bloc.dart';
 
 class SignUp extends StatelessWidget {
