@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../common/routes/names.dart';
 import '../../common/utils/toast_info.dart';
 
 class SignInController {
@@ -37,6 +38,8 @@ class SignInController {
         var user = credential.user;
         if (user != null) {
           print(user);
+          Navigator.pushNamedAndRemoveUntil(
+              context, AppRoutes.APPLICATION, (route) => false);
         } else {
           toastInfo(message: 'you are not a user on this app');
         }
@@ -45,29 +48,9 @@ class SignInController {
           case 'user-not-found':
             toastInfo(message: "Invalid user. Please check your credentials.");
             break;
-          case 'wrong-password':
-            toastInfo(message: "Incorrect password. Please try again.");
-            break;
-          case 'invalid-email':
-            toastInfo(message: "Invalid email address. Please verify and try again.");
-            break;
-          case 'too-many-requests':
-            toastInfo(message: "Too many requests. Please wait a moment and try again.");
-            break;
-          case 'user-disabled':
-            toastInfo(message: "This user has been disabled. Please contact support.");
-            break;
-          case 'network-request-failed':
-            toastInfo(message: "Network error. Check your internet connection and try again.");
-            break;
-          case 'operation-not-allowed':
-            toastInfo(message: "This operation is not allowed. Please contact support.");
-            break;
-          default:
-            toastInfo(message: "An unknown error occurred. Please try again.");
-            break;
+
         }
       }
-    } catch (e) {}
+    } catch (_) {}
   }
 }

@@ -39,6 +39,7 @@ dependencies:
   cloud_firestore:
   intl:
   fluttertoast:
+  shared_preferences:
 
 
   # The following adds the Cupertino Icons font to your application.

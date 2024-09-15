@@ -1,3 +1,7 @@
+import 'package:bloc_learning/common/routes/names.dart';
+import 'package:bloc_learning/common/routes/pages.dart';
+import 'package:bloc_learning/common/values/constant.dart';
+import 'package:bloc_learning/global.dart';
 import 'package:bloc_learning/pages/welccome/bloc/welcm_state.dart';
 import 'package:bloc_learning/pages/welccome/bloc/welcome_bloc.dart';
 import 'package:bloc_learning/pages/welccome/bloc/welcome_event.dart';
@@ -126,13 +130,9 @@ class _WelcomeState extends State<Welcome> {
                       duration: const Duration(milliseconds: 1000),
                       curve: Curves.decelerate);
             } else {
-              Navigator.of(context).pushNamedAndRemoveUntil("sign_in", (route) => false);
-              // BlocProvider.of<WelcomeBloc>(context).add(WelcomeEvent(0));
-              // BlocProvider.of<WelcomeBloc>(context)
-              //     .pageController
-              //     .animateToPage(0,
-              //         duration: const Duration(milliseconds: 1000),
-              //         curve: Curves.decelerate);
+              Global.storageService.setBool(AppConstant.INTRO_COMPLETE, true);
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(AppRoutes.SIGNIN, (route) => false);
             }
           },
           child: Container(
