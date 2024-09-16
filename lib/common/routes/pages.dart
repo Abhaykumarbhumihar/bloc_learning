@@ -3,24 +3,22 @@ import 'package:bloc_learning/common/values/constant.dart';
 import 'package:bloc_learning/global.dart';
 import 'package:bloc_learning/pages/application/application.dart';
 import 'package:bloc_learning/pages/application/bloc/app_bloc.dart';
+import 'package:bloc_learning/pages/product/presentation/bloc/product_bloc.dart';
+import 'package:bloc_learning/pages/product/presentation/ui/produt_list.dart';
 import 'package:bloc_learning/pages/signUp/presentation/bloc/sign_up_bloc.dart';
 import 'package:bloc_learning/pages/signUp/presentation/ui/sign_up.dart';
 import 'package:bloc_learning/pages/signin/presentation/ui/signin.dart';
 import 'package:bloc_learning/pages/welccome/bloc/welcome_bloc.dart';
 import 'package:bloc_learning/pages/welccome/welcome.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../pages/signin/data/repositories/auth_repository_impl.dart';
 import '../../pages/signin/presentation/bloc/signin_bloc.dart';
 import '../../service_locator.dart';
 import 'names.dart';
 
 class AppPages {
   static List<PageEntity> routes() {
-
     return [
       PageEntity(
         route: AppRoutes.INITIAL,
@@ -32,7 +30,7 @@ class AppPages {
       PageEntity(
         route: AppRoutes.SIGNIN,
         page: SignIn(),
-        bloc:BlocProvider(
+        bloc: BlocProvider(
           create: (_) => getIt<SigninBloc>(),
         ),
       ),
@@ -48,6 +46,12 @@ class AppPages {
         page: ApplicationPage(),
         bloc: BlocProvider(create: (_) => AppBloc()),
       ),
+      PageEntity(
+          route: AppRoutes.PRODUCT,
+          page: Product(),
+          bloc: BlocProvider(
+            create: (_) => getIt<ProductBloc>()..add(FetchProduct()),
+          ))
     ];
   }
 

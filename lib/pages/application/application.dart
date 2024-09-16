@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../common/utils/screenUtils.dart';
-
 import '../../common/values/colors.dart';
+import '../product/presentation/bloc/product_bloc.dart';
 import 'application_widget.dart';
 
 class ApplicationPage extends StatelessWidget {
@@ -25,7 +25,7 @@ class ApplicationPage extends StatelessWidget {
             bottomNavigationBar: Container(
               width: width,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(12.0),
                       topRight: Radius.circular(12.0)),
                   boxShadow: [
@@ -35,6 +35,7 @@ class ApplicationPage extends StatelessWidget {
                         spreadRadius: 2)
                   ]),
               child: BottomNavigationBar(
+
                 currentIndex: state.index,
                 showSelectedLabels: false,
                 showUnselectedLabels: false,
@@ -44,8 +45,11 @@ class ApplicationPage extends StatelessWidget {
                 type: BottomNavigationBarType.fixed,
                 onTap: (value) {
                   context.read<AppBloc>().add(TriggerAppEvent(value));
+                  if (value == 0) {
+                    context.read<ProductBloc>().add(FetchProduct());
+                  }
                 },
-                items:<BottomNavigationBarItem>[].bottomTabs(width, height),
+                items: <BottomNavigationBarItem>[].bottomTabs(width, height),
               ),
             ),
           ),
