@@ -3,6 +3,6 @@ class AppRoutes{
   static const INITIAL="/";
   //bottombar screen
   static  const APPLICATION="/application";
-  static const SIGNIN="/sign_in";
-  static const SIGNUP="/sign_up";
+  static const SIGNIN="/signIn";
+  static const SIGNUP="/register";
 }
