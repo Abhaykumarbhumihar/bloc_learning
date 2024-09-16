@@ -33,14 +33,20 @@ Make sure you have the following installed:
 
 1. Domain Layer
    Entities: Core objects (e.g., User) that represent the business domain.
+
    Repositories: Abstract interfaces for accessing data, defining the contract for data retrieval.
-   UseCases: Business rules that act as an intermediary between the UI and the repository.
+   
+  UseCases: Business rules that act as an intermediary between the UI and the repository.
 2. Data Layer
+   
    Data Models: Classes that convert raw data (e.g., from Firebase) into domain entities.
+  
    Repository Implementation: Concrete implementations of repository interfaces, handling data interactions with external services (e.g., Firebase).
 
 3. Presentation Layer
+  
    UI Widgets: Components that define the visual structure of the application.
+ 
    BLoC/Controller Logic: Manages the state and business logic of the UI, separating concerns from the presentation layer.
 
 
