@@ -13,7 +13,6 @@ import 'package:bloc_learning/pages/signin/domain/usecases/sign_in_usecase.dart'
 import 'package:bloc_learning/pages/signin/presentation/bloc/signin_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
-import 'package:http/http.dart';
 
 // Create a GetIt instance
 final GetIt getIt = GetIt.instance;
@@ -39,8 +38,6 @@ void setupLocator() {
       () => SignUpUseCase(getIt<SignUpRepositery>()));
   getIt.registerFactory<SignUpBloc>(() => SignUpBloc(getIt<SignUpUseCase>()));
 
-
-
   getIt.registerSingleton<ApiServices>(ApiServices("https://dummyjson.com"));
   getIt.registerLazySingleton<ProductRepositery>(
       () => ProductRepositeryImpl(getIt<ApiServices>()));
@@ -48,9 +45,7 @@ void setupLocator() {
   getIt.registerLazySingleton<ProductUseCase>(
       () => ProductUseCase(getIt<ProductRepositery>()));
 
-  getIt
-      .registerFactory<ProductBloc>(() => ProductBloc(getIt<ProductUseCase>()));
-
+  getIt.registerFactory<ProductBloc>(() => ProductBloc(getIt<ProductUseCase>()));
 }
 /**
  * registerLazySingleton
