@@ -18,6 +18,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       FetchProduct event, Emitter<ProductState> emit) async {
     emit(state.copyWith(isLoading: true));
     try {
+
       final product = await _productUseCase.getProduct();
       if (product != null) {
         emit(ProductState.loaded(product));
