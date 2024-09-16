@@ -1,3 +1,7 @@
+import 'package:bloc_learning/pages/signUp/data/sign_up_repository_impl.dart';
+import 'package:bloc_learning/pages/signUp/domain/repositery/signup_repositery.dart';
+import 'package:bloc_learning/pages/signUp/domain/usecases/sign_up_usecase.dart';
+import 'package:bloc_learning/pages/signUp/presentation/bloc/sign_up_bloc.dart';
 import 'package:bloc_learning/pages/signin/data/repositories/auth_repository_impl.dart';
 import 'package:bloc_learning/pages/signin/domain/repositery/auth_repositery.dart';
 import 'package:bloc_learning/pages/signin/domain/usecases/sign_in_usecase.dart';
@@ -21,6 +25,11 @@ void setupLocator() {
 
   // Register SigninBloc
   getIt.registerFactory<SigninBloc>(() => SigninBloc(getIt<SignInUseCase>()));
+
+
+  getIt.registerLazySingleton<SignUpRepositery>(() => SignUpRepositeryImple(getIt<FirebaseAuth>()));
+  getIt.registerLazySingleton<SignUpUseCase>(() =>SignUpUseCase(getIt<SignUpRepositery>()));
+  getIt.registerFactory<SignUpBloc>(() => SignUpBloc(getIt<SignUpUseCase>()));
 }
 /**
  * registerLazySingleton

@@ -24,7 +24,7 @@ class SignIn extends StatelessWidget {
         // If user is authenticated, navigate to the Application page
         if (state.isAuthenticated) {
 
-//          BlocProvider.of<AppBloc>(context).add(TriggerAppEvent(1));
+//        BlocProvider.of<AppBloc>(context).add(TriggerAppEvent(1));
           Navigator.pushNamedAndRemoveUntil(
               context, AppRoutes.APPLICATION, (route) => false);
         }

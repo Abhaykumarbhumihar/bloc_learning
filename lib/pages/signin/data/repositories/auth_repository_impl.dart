@@ -27,7 +27,7 @@ class AuthRepositoryImpl implements AuthRepository {
     } on firebase.FirebaseAuthException catch (e) {
       return Future.error(_handleFirebaseAuthError(e));
     }
-    return null;
+
   }
 
   @override
@@ -60,4 +60,6 @@ class AuthRepositoryImpl implements AuthRepository {
         return 'An unknown error occurred. Please try again later.';
     }
   }
+
+
 }
