@@ -17,3 +17,10 @@ class PasswordEvent extends SigninEvent{
   @override
   List<Object?> get props => [password];
 }
+
+class SubmitLoginEvent extends SigninEvent {
+  const SubmitLoginEvent();
+
+  @override
+  List<Object?> get props => [];
+}
