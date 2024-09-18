@@ -44,10 +44,43 @@ class ApplicationPage extends StatelessWidget {
                 elevation: 0,
                 type: BottomNavigationBarType.fixed,
                 onTap: (value) {
-                  context.read<AppBloc>().add(TriggerAppEvent(value));
-                  if (value == 0) {
-                    context.read<ProductBloc>().add(FetchProduct());
+                  if(value==2){
+
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          padding: EdgeInsets.all(16.0),
+                          height: 200,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Bottom Sheet Title',
+                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(height: 16),
+                              Text('This is a modal bottom sheet.'),
+                              SizedBox(height: 16),
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text('Close'),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+
+                  }else{
+                    context.read<AppBloc>().add(TriggerAppEvent(value));
+                    if (value == 0) {
+                      context.read<ProductBloc>().add(FetchProduct());
+                    }
                   }
+
                 },
                 items: <BottomNavigationBarItem>[].bottomTabs(width, height),
               ),

@@ -1,19 +1,34 @@
 import 'package:bloc_learning/pages/product/presentation/ui/produt_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 
 Widget buildPage(int index) {
   List<Widget> _widget = [
     Product(),
-    Center(
+    Container(
+      width: 300,
+      height: 400,
+      color: Colors.red,
       child: Text("Search"),
     ),
-    Center(
+    Container(
+      width: 300,
+      height: 400,
+      color: Colors.blue,
       child: Text("Course"),
     ),
-    Center(
+    Container(
+      width: 300,
+      height: 400,
+      color: Colors.green,
       child: Text("Chat"),
     ),
-    Center(
+    Container(
+      width: 300,
+      height: 400,
+      color: Colors.black38,
       child: Text("Profile"),
     ),
   ];
