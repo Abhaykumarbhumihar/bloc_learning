@@ -10,13 +10,15 @@ class ProductRepositeryImpl extends ProductRepositery {
   ProductRepositeryImpl(this._apiServices);
 
   @override
-  Future<Product?> getProduct() async {
+  Future<List<Product>?> getProduct() async {
     try {
       final response = await _apiServices.get('/products');
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
+        final List<dynamic> data = jsonDecode(response.body); // Decode as a list
         print(data);
-        return Product.fromJson(data);
+
+        // Convert the List<dynamic> to List<Product>
+        return data.map((productJson) => Product.fromJson(productJson)).toList();
       } else {
         throw Exception('Failed to load product');
       }

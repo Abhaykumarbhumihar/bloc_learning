@@ -5,7 +5,7 @@ class ProductUseCase{
   final ProductRepositery  _productRepositery;
 
   ProductUseCase(this._productRepositery);
-  Future<Product?>getProduct(){
+  Future<List<Product>?>getProduct(){
     return _productRepositery.getProduct();
   }
 }

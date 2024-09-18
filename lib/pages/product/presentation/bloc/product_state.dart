@@ -2,7 +2,7 @@ part of 'product_bloc.dart';
 
 class ProductState {
   final bool isLoading;
-  final Product? product;
+  final List<Product>?  product;
   final String? errorMessage;
 
   ProductState({
@@ -22,7 +22,7 @@ class ProductState {
   }
 
   // Factory constructor for loaded state
-  factory ProductState.loaded(Product product) {
+  factory ProductState.loaded(  List<Product>? product) {
     return ProductState(
       isLoading: false,
       product: product,
@@ -40,7 +40,7 @@ class ProductState {
   // copyWith method for creating modified copies of the state
   ProductState copyWith({
     bool? isLoading,
-    Product? product,
+    List<Product>?  product,
     String? errorMessage,
   }) {
     return ProductState(

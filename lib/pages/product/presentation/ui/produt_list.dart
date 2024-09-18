@@ -20,7 +20,7 @@ class Product extends StatelessWidget {
       child: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
           print("SSS S SS SS S S S S S ");
-          print(state.product?.products?.length);
+          print(state.product?.length);
           return Container(
             child: SafeArea(
               child: Scaffold(
@@ -30,23 +30,19 @@ class Product extends StatelessWidget {
                     children: <Widget>[
                       resuableText("Product List"),
                       state.isLoading
-                          ? Center(
+                          ? const Center(
                               child: CircularProgressIndicator(),
                             )
                           : SizedBox(
                               height: ScreenUtils.height(context) * 0.5,
                               child: ListView.builder(
-                                  itemCount: state.product?.products?.length,
+                                  itemCount: state.product?.length,
                                   itemBuilder: (context, index) {
                                     return Container(
                                       child: Column(
                                         children: <Widget>[
-                                          Text(state.product?.products![index]
-                                                  .title ??
-                                              ""),
-                                          Text(state.product?.products![index]
-                                                  .description ??
-                                              "")
+                                          Text(state.product![index].title??""),
+                                          Text(state.product![index].description??"")
                                         ],
                                       ),
                                     );
