@@ -10,7 +10,19 @@ class StorageService{
   Future<bool>setBool(String key,bool value)async{
     return await _preferences.setBool(key, value);
   }
+
    getBool(String key){
     return  _preferences.getBool(key)??false;
   }
+
+  Future<bool>setString(String key,String value)async{
+    return await _preferences.setString(key, value);
+  }
+
+  getString(String key){
+    return  _preferences.getString(key)??false;
+  }
+
+
+
 }

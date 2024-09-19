@@ -1,3 +1,4 @@
+import 'package:bloc_learning/common/routes/names.dart';
 import 'package:bloc_learning/common/routes/pages.dart';
 import 'package:bloc_learning/global.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
                     elevation: 0,
                     backgroundColor: Colors.white)),
             onGenerateRoute: AppPages.GenerateRouteSettingss,
-            initialRoute: "/",
+            initialRoute: AppRoutes.SPLASH,
           ),
         ));
   }

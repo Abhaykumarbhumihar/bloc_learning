@@ -10,3 +10,5 @@ class SplashInitial extends SplashState {}
 class NavigateToLogin extends SplashState {}
 
 class NavigateToApplication extends SplashState {}
+
+class NavigateToOnBoarding extends SplashState{}

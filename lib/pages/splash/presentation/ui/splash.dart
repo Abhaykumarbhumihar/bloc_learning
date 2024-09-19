@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../common/routes/names.dart';
 import '../bloc/splash_bloc.dart';
 
@@ -12,15 +13,17 @@ class SplashPage extends StatelessWidget {
           Navigator.pushReplacementNamed(context, AppRoutes.SIGNIN);
         } else if (state is NavigateToApplication) {
           Navigator.pushReplacementNamed(context, AppRoutes.APPLICATION);
+        } else if (state is NavigateToOnBoarding) {
+          Navigator.pushReplacementNamed(context, AppRoutes.INITIAL);
         }
       },
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Center(
-          child: Image.asset(
-            'assets/images/logo.png', // Your logo image
-            width: 150,
-            height: 150,
+          child: Icon(
+            Icons.factory,
+            size: 150,
+            color: Colors.blue,
           ),
         ),
       ),
